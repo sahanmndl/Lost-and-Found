@@ -36,7 +36,8 @@ export const signUp = async (req, res, next) => {
         name, 
         email, 
         password: hashedPassword, 
-        number
+        number,
+        items: []
     })
 
     try {
