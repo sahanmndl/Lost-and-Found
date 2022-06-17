@@ -6,8 +6,13 @@ import UserItems from "./components/UserItems";
 import ItemDetails from "./components/ItemDetails";
 import AddItem from "./components/AddItem";
 import Header from "./components/Header";
+import { useSelector } from "react-redux";
 
 function App() {
+
+  const isLoggedIn = useSelector(state => state.isLoggedIn)
+  console.log(isLoggedIn)
+
   return (
     <React.Fragment>
       <header>
@@ -16,10 +21,10 @@ function App() {
       <main>
         <Routes>
           <Route path="/auth" element={<Auth/>} />
-          <Route path="/items" element={<ItemContainer/>} />
-          <Route path="/myItems" element={<UserItems/>} />
-          <Route path="/myItems/:id" element={<ItemDetails/>} />
-          <Route path="/items/addItem" element={<AddItem/>} />
+          <Route path="/allItems" element={<ItemContainer/>} />
+          <Route path="/foundItems" element={<UserItems/>} />
+          <Route path="/foundItems/:id" element={<ItemDetails/>} />
+          <Route path="/allItems/addItem" element={<AddItem/>} />
         </Routes>
       </main>
     </React.Fragment>
