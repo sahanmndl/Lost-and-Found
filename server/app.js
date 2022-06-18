@@ -2,9 +2,11 @@ import express from "express";
 import mongoose from "mongoose";
 import itemRouter from "./routes/item_routes";
 import router from "./routes/user_routes";
+import cors from "cors";
 
 const app = express()
 
+app.use(cors())
 app.use(express.json())
 app.use("/api/user", router)
 app.use("/api/item", itemRouter)
