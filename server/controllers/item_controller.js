@@ -5,7 +5,7 @@ import User from "../models/User";
 export const getAllItems = async (req, res, next) => {
     let items;
     try {
-        items = await Item.find()
+        items = await Item.find().populate('user')
     } catch(err) {
         return console.log(err)
     }

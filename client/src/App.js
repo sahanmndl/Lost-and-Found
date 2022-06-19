@@ -1,7 +1,7 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
 import Auth from "./components/Auth";
-import ItemContainer from "./components/ItemContainer";
+import Items from "./components/Items";
 import UserItems from "./components/UserItems";
 import ItemDetails from "./components/ItemDetails";
 import AddItem from "./components/AddItem";
@@ -21,7 +21,7 @@ function App() {
       <main>
         <Routes>
           <Route path="/auth" element={<Auth/>} />
-          <Route path="/allItems" element={<ItemContainer/>} />
+          <Route path="/allItems" element={<Items/>} />
           <Route path="/foundItems" element={<UserItems/>} />
           <Route path="/foundItems/:id" element={<ItemDetails/>} />
           <Route path="/allItems/addItem" element={<AddItem/>} />
