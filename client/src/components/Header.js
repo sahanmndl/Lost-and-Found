@@ -35,6 +35,12 @@ const Header = () => {
                             to="/foundItems"
                             label="Found by me" 
                         />
+                        <Tab 
+                            style={styles.tabLabel} 
+                            LinkComponent={Link}
+                            to="/allItems/addItem"
+                            label="Add new item" 
+                        />
                     </Tabs>
                 </Box>
             )}
