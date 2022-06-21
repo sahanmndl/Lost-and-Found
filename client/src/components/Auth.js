@@ -6,6 +6,7 @@ import { authActions } from '../store';
 import {useNavigate} from "react-router-dom";
 
 const Auth = () => {
+  
   const dispatch = useDispatch()
   const navigate = useNavigate()
   const [isSignup, setIsSignup] = useState(false)
