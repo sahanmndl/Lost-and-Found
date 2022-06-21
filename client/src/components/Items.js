@@ -40,6 +40,7 @@ const Items = () => {
       {items && items.map((item, index) => (
         <Grid item xs={2} sm={4} md={4} key={index}>
           <ItemContainer
+            id={item._id}
             name={item.name}
             description={item.description}
             image={item.image}
@@ -47,6 +48,7 @@ const Items = () => {
             email={item.email}
             number={item.number}
             username={item.user.name}
+            isUser={localStorage.getItem('userId') === item.user._id}
           />
         </Grid>
       ))}

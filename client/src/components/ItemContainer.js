@@ -10,8 +10,30 @@ import EditIcon from '@mui/icons-material/Edit';
 import CallIcon from '@mui/icons-material/Call';
 import AlternateEmailIcon from '@mui/icons-material/AlternateEmail';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
+import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
-const ItemContainer = ({name, description, image, foundat, email, number, username}) => {
+const ItemContainer = ({id, name, description, image, foundat, email, number, username, isUser}) => {
+
+  const navigate = useNavigate()
+
+  const handleEdit = () => {
+    navigate(`/foundItems/${id}`)
+  }
+
+  const sendDeleteRequest = async () => {
+    const response = await axios.delete(`http://localhost:5000/api/item/${id}`)
+                                .catch(err => console.log(err))
+    const data = await response.data
+
+    return data
+  }
+
+  const handleDelete = () => {
+    sendDeleteRequest()
+    .then((data) => console.log(data))
+  }
+
   return (
     <div>
       {" "}
@@ -74,14 +96,16 @@ const ItemContainer = ({name, description, image, foundat, email, number, userna
               {email}
             </Typography>
         </Box>
-        <Box display="flex">
-            <IconButton sx={{ marginLeft: "auto" }}>
+        {isUser && 
+          <Box display="flex">
+            <IconButton sx={{ marginLeft: "auto" }} onClick={handleEdit}>
               <EditIcon color="warning" />
             </IconButton>
-            <IconButton>
+            <IconButton onClick={handleDelete}>
               <DeleteIcon color="error" />
             </IconButton>
-        </Box>
+          </Box>
+        }
       </Card>
     </div>
   )

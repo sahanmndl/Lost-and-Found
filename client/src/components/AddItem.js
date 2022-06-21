@@ -1,8 +1,11 @@
 import React, {useState} from 'react';
 import {Box, Typography, TextField, Button} from "@mui/material";
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 const AddItem = () => {
+
+  const navigate = useNavigate()
 
   const [inputs, setInputs] = useState({
     name: "", 
@@ -41,6 +44,7 @@ const AddItem = () => {
     console.log(inputs)
     sendRequest()
     .then(data => console.log(data))
+    .then(() => navigate("/allItems"))
   }
 
   return (

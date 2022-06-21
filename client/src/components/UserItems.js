@@ -6,6 +6,7 @@ import { Grid } from '@mui/material';
 const UserItems = () => {
 
   const [userItems, setUserItems] = useState()
+  const [userName, setUserName] = useState()
 
   const userId = localStorage.getItem('userId')
 
@@ -13,6 +14,7 @@ const UserItems = () => {
     const response = await axios.get(`http://localhost:5000/api/item/user/${userId}`)
                                 .catch(err => console.log(err))
     const data = await response.data
+    setUserName(data.items.name)
 
     return data
   }
@@ -29,13 +31,15 @@ const UserItems = () => {
       {userItems && userItems.map((item, index) => (
         <Grid item xs={2} sm={4} md={4} key={index}>
           <ItemContainer
+            id={item._id}
             name={item.name}
             description={item.description}
             image={item.image}
             foundat={item.foundat}
             email={item.email}
             number={item.number}
-            username={item.user.name}
+            username={userName}
+            isUser={true}
           />
         </Grid>
       ))}
