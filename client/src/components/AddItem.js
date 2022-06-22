@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import {Box, Typography, TextField, Button} from "@mui/material";
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import FileBase64 from 'react-file-base64';
 
 const AddItem = () => {
 
@@ -128,6 +129,11 @@ const AddItem = () => {
               inputProps={{ inputMode: 'numeric', pattern: '[0-9]*' }}
               value={inputs.number}
               onChange={handleChange}
+            />
+            <FileBase64
+              type="file"
+              multiple={false}
+              onDone={({ base64 }) => setInputs({ ...inputs, image: base64 })}
             />
             <Button
               type="submit"
